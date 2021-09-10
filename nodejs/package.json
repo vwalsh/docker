@@ -1,0 +1,14 @@
+{
+  "name": "codenode",
+  "version": "1.0.0",
+  "description": "testing node stuffs, a basic docker setup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vance Walsh",
+  "license": "ISC",
+  "dependencies": {
+      
+  }
+}
