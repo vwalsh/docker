@@ -6,12 +6,12 @@
 # 
 DOCKER_COMPOSE_CMD=""
 
-# Check for 'docker compose' (as part of Docker CLI)
-if command -v "docker compose" &> /dev/null; then
-    DOCKER_COMPOSE_CMD="docker compose"
-# Check for 'docker-compose' (as the standalone binary)
-elif command -v "docker-compose" &> /dev/null; then
+# Check for 'docker-compose' (as part of Docker CLI)
+if which "docker-compose" &> /dev/null; then
     DOCKER_COMPOSE_CMD="docker-compose"
+# Check for 'docker compose' (as the standalone binary)
+elif which "docker" &> /dev/null; then
+    DOCKER_COMPOSE_CMD="docker compose"
 else
     echo "Neither 'docker compose' nor 'docker-compose' binary is available."
     exit 1
