@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body{
+      background: #111;
+      color: #ddd;
+    }
+
+  </style>
+<body>
+
 <h1>Query Results:</h1>
 <strong>WARNING: this is a docker container running on your host machine. You can still mess up your host via this.
   Be sure you understand if you delete/overwrite files, it may delete/overwrite files located on your host. While this should be limited
@@ -61,3 +72,7 @@ eventually this will help by showcasing some ways logins are written improperly.
     <br/>
     <button type="submit">Login</button>
 </form>
+
+
+</body>
+</html>

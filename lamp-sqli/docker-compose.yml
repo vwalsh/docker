@@ -19,26 +19,23 @@ services:
   # the service name is defined here as "db" this is the "hostname" within docker for the mysql server.
   db:
   # REQUIRES: ./mysql folder for storing the init.sql file which creates the initial tables in the db
-    image: mysql:5.7
+    image: lscr.io/linuxserver/mariadb:10.11.5
+    # technically it's running mariadb under the hood now as that was easier to setup poorly. lol
     # to solve the error: "no matching manifest for linux/arm64/v8 in the manifest list entries"
-    platform: linux/amd64
+    #platform: linux/amd64
     container_name: mysql_db
-    command:
-      - --default-authentication-plugin=mysql_native_password
-      - --secure-file-priv=
-      - --user=root
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/config
       - ./php:/var/www/html
-      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/init.sql:/config/initdb.d/init.sql
     environment:
     # NOTE: mysql root password isn't really needed unless logging into the mysql CLI console.
       MYSQL_ROOT_PASSWORD: iamrootpassword
       MYSQL_DATABASE: sqli_database
-      MYSQL_USER: mysql_php_user_name
-      MYSQL_PASSWORD: mysql_php_user_password
-    ports:
-      - "3306:3306"
+      # if you aren't logged in as UID 1000 or GID 1000, then this will need your attention.
+      # I'm too lazy to run this dynamically to fix that issue. GL!
+      PUID: 1000
+      PGID: 1000
     networks:
       - app-network
 
