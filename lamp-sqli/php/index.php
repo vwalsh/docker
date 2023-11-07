@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body{
+      background: #111;
+      color: #ddd;
+    }
+    a, a:active, a:focus, a:hover{
+      color: pink;
+    }
+  </style>
+<body>
+
 <h1>Welcome to an SQLi learning docker image</h1>
 
 <p>Here there is a LAMP type stack running in docker. LAMP being Linux, Apache, Mysql and PHP.</p>
@@ -8,3 +21,7 @@
   <li><a href="./query.php">/query.php is the main URI and file to work with in this version</a></li>
   <li><strong>More will come in the future, enjoy!</strong></li>
 </ul>
+
+
+</body>
+</html>

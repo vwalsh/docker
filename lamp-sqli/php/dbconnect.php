@@ -7,7 +7,7 @@
 
 // custom function to query the db and return results:
 // and no, this is not good code. that's the point of this!
-function query_db($sql)
+function query_db($sql, $sql_pretty)
 {
   $servername = "db"; // This should match the service name of the MySQL service in docker-compose (aka this is the "hostname" of the mysql server)
   $username = "root";
@@ -25,7 +25,7 @@ function query_db($sql)
   }
 
   try {
-    print("<strong>running query: " . htmlspecialchars($sql) . "</strong>\n\n\n<pre style='background: #ccc;'>");
+    print("<br/><br/><strong>running query: " . $sql_pretty . "</strong>\n\n\n<pre>");
 
     // execute the sql statement against the mysql connection (aka query the mysql server)
     $result = $conn->query($sql);
