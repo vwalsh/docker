@@ -5,7 +5,18 @@
       background: #111;
       color: #ddd;
     }
-
+    pre{
+      background: #222;
+      color: #eee;
+      padding: 10px;
+    }
+    strong{
+      color: #fff;
+      font-size: 24px;
+    }
+    span.sqli{
+      color: red;
+    }
   </style>
 <body>
 
@@ -34,12 +45,15 @@ if(!empty($user) && !empty($pass)){
   // ==================================== SQLi is here! =======================================================
   // This is where you should consider editing the code manually if you don't want to use the POST vars.
   // Prepare the SELECT statement to run as an SQL query 
-  $sql = "SELECT user,email FROM users WHERE user = '$user' AND pass = '$pass' ;";
+  $sql = "SELECT user,email FROM users WHERE user = '$user' AND pass = '$pass';";
+  $sql_pretty = "SELECT user,email FROM users WHERE user = '<span class='sqli'>$user</span>' AND pass = '<span class='sqli'>$pass</span>';";
+
   // ==================================== SQLi is here! =======================================================
 
   
   // this executes the query, it's a custom function located in the dbconnect.php file
-  $results = query_db($sql);
+  // NOTE: $sql is the actual query, $sql_pretty is for better debugging!
+  $results = query_db($sql, $sql_pretty);
   // TODO: utilize the $results to show how a login page might work
   // TODO: show how a search function might work
   // TODO: show how a newsletter signup might work
@@ -54,6 +68,7 @@ consider trying to run various queries (by either editing the $sql variable or s
 this should help understand how a query is built when it's done poorly.
 eventually this will help by showcasing some ways logins are written improperly.
 
+NOTE: the <span class='sqli'>RED</span> text in the query is the INPUT you've given it!
 </pre>
 
 <form action="query.php" method="post" autocomplete="off">

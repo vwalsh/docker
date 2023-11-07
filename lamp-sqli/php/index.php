@@ -5,7 +5,9 @@
       background: #111;
       color: #ddd;
     }
-
+    a, a:active, a:focus, a:hover{
+      color: pink;
+    }
   </style>
 <body>
 
